@@ -1,0 +1,104 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="index.css">
+    <!-- CSS only -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" 
+    integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <!-- JavaScript Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" 
+    integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+    <title>ToDo</title>
+</head>
+<body>
+    <div class="todo">
+        <section id="tosection"> 
+           <div class="humb">
+               <div class="humbuger">
+                   <p id="events"> <img src="images/events.png" width="30px" height="30px" title="Todo" alt=""></p>
+                   <p>Keep your Records Straight</p>
+                   <!----------------------------------- date------------- -->
+                   <p id="date">
+                       <script>
+                           var date = new Date();
+                           var days = date.getDay();
+                        //    var day = date.getDate();
+                           var month = date.getMonth();
+                           var year = date.getFullYear();
+                           if(days < 10){
+                               days = "0" + days;
+                               document.getElementById('date').innerHTML = days+"/"+ (month + 1) +"/"+ year;
+                           }
+                           
+                       </script>
+                   </p>
+                   <!-- ----------------------------------time------------- -->
+                   <p id="time">
+                       <script>
+                          const timfun = () => {
+                            var time = new Date();
+                           var hours = time.getHours();
+                           var min = time.getMinutes();
+                           var sec = time.getSeconds();
+                           if(min < 10){
+                               min = "0" + min;
+                           }
+                           if(hours < 10){
+                            hours = "0" + hours;
+                            document.getElementById('time').innerHTML = hours + " "+":" + " " + min + " " + ":" + " " + sec;
+                           }else{
+                            document.getElementById('time').innerHTML = hours + " "+":" + " " + min + " " + ":" + " " + sec;
+                           }
+                           setTimeout(timfun, 1000);
+                          }
+                          window.onload = timfun;
+                       </script>
+                   </p>
+               </div>
+           </div>
+           <div class="subsection"></div>
+        </section>
+        <!-- ---------------------------------------to do body------------------------ -->
+        <section>
+            <div class="inputs">
+                <p class="text-danger" id="response"></p>
+                <input type="text" name="todoitem" class="form-control" id="todoitem" placeholder="Enter todo item">
+                <input type="submit" value="Add" onclick="addtodo()" class="btn btn-primary">
+                <script>
+                    const addtodo = () => {
+                        var todo = document.getElementById('todoitem');
+                        var response = document.getElementById('response');
+                        var locations = document.getElementById('listitems');
+                        if(todo.value == ""){
+                            response.innerHTML = "Please Enter todo item";
+                        }else{
+                            var list = document.createElement("LI");
+                            var listadd = list.appendChild(document.createTextNode(todo.value)).id = todo.value;
+                            var addimg =document.createElement('img');
+                            var addimgsrc = addimg.src = 'images/delete.png';
+                            list.appendChild(addimg);
+                            locations.appendChild(list);
+                            todo.value = "";
+                        }
+                        // var addevent = document.getElementsByTagName('img')[0];
+                        list.addEventListener("click", function () {
+                            let consent = confirm("Delete this task ?");
+                            if(consent == true){
+                            list.remove();
+                            }
+                        });
+                    }
+                </script>
+            </div>
+            <!-- -------------------------------all added items go gere------------------ -->
+            <section id="listings">
+                <ul id="listitems">
+
+                </ul>
+            </section>
+        </section>
+    </div>
+</body>
+</html>

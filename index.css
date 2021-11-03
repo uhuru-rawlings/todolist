@@ -1,0 +1,58 @@
+body{
+    background-color: rgb(248, 245, 232);
+    font-family: sans-serif;
+}
+.todo{
+    width: 350px;
+    box-shadow: 13px 13px 20px rgb(238, 238, 238), -13px -13px 20px rgb(201, 197, 197);
+    height: 550px;
+    background-color: #fff;
+    margin: auto;
+}
+#tosection{
+    background-image: url(images/todo.jpg);
+    height: 200px;
+    background-size: cover;
+    display: flex;
+}
+.humbuger{
+    height: 200px;
+    width: 175;
+    color: #fff;
+    padding-left:8;
+    font-size: 19px;
+}
+.subsection{
+    background-color: rgba(255,255,255, 0.5);
+    /* background-color: crimson; */
+    height: 199px;
+    width: 175;
+    position: relative;
+    top: 0;
+    right: 0;
+    border-bottom: 5px solid rgb(26, 114, 141);
+}
+.inputs{
+    margin: 10px;
+}
+#listings{
+    margin: 3px 10px 3px 10px;
+    height: auto;
+    overflow:auto;
+    height: 300px;
+    width: 270px;
+}
+ul li{
+    list-style: none;
+    /* border: 1px solid gray; */
+    margin-top: 7px ;
+    padding: 10px;
+    padding-left: 10px;
+    border-radius: 3px;
+    background-color: rgb(255, 255, 255);
+    box-shadow: 5px 5px 8px rgb(236, 235, 235), -5px -5px 8px rgb(212, 212, 212);
+}
+li{
+    display: flex;
+    justify-content: space-between;
+}
